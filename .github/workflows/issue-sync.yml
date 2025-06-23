@@ -10,9 +10,6 @@ jobs:
   sync-issue:
     name: Sync Issue with Project Board
     runs-on: ubuntu-latest
-    permissions:
-      issues: read
-      repository-projects: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -62,7 +59,7 @@ jobs:
 
       - name: Run issue-sync
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PROJECT_SYNC_GITHUB_TOKEN }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
           REPOSITORY: ${{ github.repository }}
           PROJECT_NUMBER: ${{ vars.PROJECT_NUMBER || 302 }}
