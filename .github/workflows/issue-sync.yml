@@ -29,8 +29,10 @@ jobs:
         uses: actions/cache@v3
         id: cache-modules
         with:
-          path: tools/@aws-cdk/project-sync/node_modules
-          key: ${{ runner.os }}-modules-${{ hashFiles('tools/@aws-cdk/project-sync/yarn.lock') }}
+          path: |
+            tools/@aws-cdk/project-sync/node_modules
+            node_modules
+          key: ${{ runner.os }}-modules-${{ hashFiles('tools/@aws-cdk/project-sync/yarn.lock', 'yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-modules-
 

@@ -16,7 +16,7 @@
     "gen-snapshots": "yarn run build && node test/snapshots/generate.js",
     "issue-sync-all": "yarn run build && node bin/issue-sync-all.js"
   },
-  "devDependencies": {
+  "dependencies": {
     "@aws-cdk/cdk-build-tools": "0.0.0",
     "@jest/globals": "^30.0.0",
     "jest": "^29",
