@@ -50,7 +50,7 @@ jobs:
           path: |
             tools/@aws-cdk/project-sync/lib/*.js
             tools/@aws-cdk/project-sync/bin/*.js
-          key: ${{ runner.os }}-build-${{ hashFiles('tools/@aws-cdk/project-sync/lib/*.js', 'tools/@aws-cdk/project-sync/bin/*.js') }}
+          key: ${{ runner.os }}-build-${{ hashFiles('tools/@aws-cdk/project-sync/lib', 'tools/@aws-cdk/project-sync/bin') }}
           restore-keys: |
             ${{ runner.os }}-build-
 
