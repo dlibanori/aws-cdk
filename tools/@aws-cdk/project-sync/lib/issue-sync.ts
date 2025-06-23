@@ -38,18 +38,18 @@ export const syncIssueData = async (issueDetails: any) => {
   const projectInfo = await github.getProjectInfo(PROJECT_NUMBER);
   const projectId = projectInfo.data.repository.projectV2.id!;
 
-  let creationFieldId = undefined;
+  let createFieldId = undefined;
   let updateFieldId = undefined;
   for (const field of projectInfo.data.repository.projectV2.fields.nodes) {
-    if (field.name === 'Creation date') {
-      creationFieldId = field.id;
+    if (field.name === 'Create date') {
+      createFieldId = field.id;
     }
     if (field.name === 'Update date') {
       updateFieldId = field.id;
     }
   }
 
-  if (creationFieldId === undefined) {
+  if (createFieldId === undefined) {
     throw new Error('Project field "Creation date" not found');
   }
 
@@ -80,7 +80,7 @@ export const syncIssueData = async (issueDetails: any) => {
   }
 
   const result = await github.setProjectItem(projectId, projectItemId, {
-    [creationFieldId]: { date: creationDate },
+    [createFieldId]: { date: creationDate },
     [updateFieldId]: { date: updateDate },
   });
   console.log('Result from mutation request: ');

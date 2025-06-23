@@ -63,6 +63,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
+          REPOSITORY: ${{ github.repository }}
+          PROJECT_NUMBER: ${{ vars.PROJECT_NUMBER || 302 }}
         run: |
           cd tools/@aws-cdk/project-sync
           node bin/issue-sync.js

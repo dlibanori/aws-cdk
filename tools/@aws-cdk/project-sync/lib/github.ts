@@ -1,3 +1,5 @@
+import { REPOSITORY, REPOSITORY_OWNER } from './config';
+
 const issueQuery = `
   createdAt
   timelineItems(last: 100) {
@@ -102,7 +104,7 @@ export class Github {
   getProjectIssues(project: string, cursor?: string) {
     return this.authGraphQL(`
       query {
-        repository(owner: "aws", name: "aws-cdk") {
+        repository(owner: "${REPOSITORY_OWNER}", name: "${REPOSITORY}") {
           projectV2(number: ${project}) {
             items(first: 100 ${cursor ? `, after: "${cursor}"` : ''}) {
               pageInfo {
@@ -128,7 +130,7 @@ export class Github {
   getProjectInfo(project: string) {
     return this.authGraphQL(`
       query {
-        repository(owner: "aws", name: "aws-cdk") {
+        repository(owner: "${REPOSITORY_OWNER}", name: "${REPOSITORY}") {
           projectV2(number: ${project}) {
             id
             fields(first: 100) {
@@ -148,7 +150,7 @@ export class Github {
   getIssue(issue: string) {
     return this.authGraphQL(`
       query {
-        repository(owner: "aws", name: "aws-cdk") {
+        repository(owner: "${REPOSITORY_OWNER}", name: "${REPOSITORY}") {
           issue(number: ${issue}) {
             ${issueQuery}
           }

@@ -1,3 +1,3 @@
 import { syncAllIssues } from '../lib/issue-sync-all.js';
 
-syncAllIssues();
+syncAllIssues().catch(console.error);

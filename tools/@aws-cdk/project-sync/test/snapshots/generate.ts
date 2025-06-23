@@ -5,7 +5,7 @@ import { join } from 'node:path';
 
 const gh = Github.default();
 
-await (async () => {
+(async () => {
   await fs.writeFile(join(__dirname, 'get-project-info.json'), JSON.stringify(await gh.getProjectInfo(PROJECT_NUMBER)));
   for (const issue of ['15891', '41', '33208', '30793']) {await fs.writeFile(join(__dirname, 'get-issue', `${issue}.json`), JSON.stringify(await gh.getIssue(issue)));}
-})();
+})().catch(console.error);
