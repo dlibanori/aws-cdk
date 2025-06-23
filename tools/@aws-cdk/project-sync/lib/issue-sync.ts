@@ -1,5 +1,5 @@
 import { Github } from './github.js';
-import { PROJECT_NUMBER } from './config.js';
+import { PROJECT_NUMBER, REPOSITORY } from './config.js';
 
 export const syncIssue = async (issue: string) => {
   const github = Github.default();
@@ -10,7 +10,7 @@ export const syncIssue = async (issue: string) => {
   // Extract repository data
   const repoData = issueData?.data?.repository;
   if (!repoData || !repoData.issue) {
-    throw new Error(`Issue ${issue} not found`);
+    throw new Error(`Issue ${issue} not found on repository ${REPOSITORY}`);
   }
 
   await syncIssueData(repoData.issue);
