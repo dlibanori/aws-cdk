@@ -31,7 +31,7 @@ export const syncIssueData = async (issueDetails: any) => {
   }
 
   if (projectItemId === undefined) {
-    console.log('Issue is not included in project, skipping.');
+    console.log(`Issue is not included in project ${PROJECT_NUMBER}, skipping.`);
     return;
   }
 
