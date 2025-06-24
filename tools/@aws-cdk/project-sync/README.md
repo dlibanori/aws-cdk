@@ -60,7 +60,7 @@ yarn issue-sync-all
 1. The tool fetches issue details from GitHub using the GraphQL API
 2. For each issue, it:
    - Determines if the issue is part of the specified project
-   - Extracts issue metada including creation and update date
+   - Extracts issue metadata including creation and update date
    - Updates the corresponding custom fields in the GitHub Project with those dates.
 
 ## Development
